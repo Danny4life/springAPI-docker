@@ -39,6 +39,19 @@ public class EmployeeController {
 
     }
 
+    // update employee
+    @PutMapping("/employee/{id}")
+    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee,
+                                                   @PathVariable("id") Long id){
+        return ResponseEntity.ok(employeeService.updateEmployee(employee, id));
+    }
+
+    //delete employee
+    @DeleteMapping("{id}")
+    public ResponseEntity<Boolean> deleteEmployee(@PathVariable("id") Long id){
+        return ResponseEntity.ok(employeeService.deleteEmployee(id));
+    }
+
     private URI getLocation(Long id) {
         return ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(id).toUri();
     }
