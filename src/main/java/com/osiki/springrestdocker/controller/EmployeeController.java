@@ -5,7 +5,9 @@ import com.osiki.springrestdocker.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -30,6 +32,14 @@ public class EmployeeController {
     // save en employee to DB
     @PostMapping
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
-        return ResponseEntity.ok(employeeService.addEmployee(employee));
+       //return ResponseEntity.ok(employeeService.addEmployee(employee));
+
+        return ResponseEntity.created(getLocation(employee.getId()))
+                .body(employeeService.addEmployee(employee));
+
+    }
+
+    private URI getLocation(Long id) {
+        return ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(id).toUri();
     }
 }
