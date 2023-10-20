@@ -4,10 +4,7 @@ import com.osiki.springrestdocker.model.Employee;
 import com.osiki.springrestdocker.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,11 @@ public class EmployeeController {
     @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id){
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
+    }
+
+    // save en employee to DB
+    @PostMapping
+    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee){
+        return ResponseEntity.ok(employeeService.addEmployee(employee));
     }
 }
