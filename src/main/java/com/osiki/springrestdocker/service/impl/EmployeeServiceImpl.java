@@ -54,13 +54,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Employee employee, Long id) {
-        Employee employee1 = inMemoryRepository.findById(id).get();
+        Employee employee2 = inMemoryRepository.findById(id).get();
 
-        employee1.setFirstName(employee.getFirstName());
-        employee1.setLastName(employee1.getLastName());
-        employee1.setUsername(employee1.getUsername());
+        employee2.setFirstName(employee.getFirstName());
+        employee2.setLastName(employee.getLastName());
+        employee2.setUsername(employee.getUsername());
 
-        inMemoryRepository.save(employee1);
+        inMemoryRepository.save(employee2);
 
         return employee;
 
