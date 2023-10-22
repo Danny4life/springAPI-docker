@@ -3,6 +3,7 @@ package com.osiki.springrestdocker.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,5 +24,7 @@ public class Account {
     private boolean credentialExpired = false;
     private boolean expired = false;
     private boolean locked = false;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Role> roles;
 
 }
