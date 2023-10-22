@@ -25,6 +25,10 @@ public class Account {
     private boolean expired = false;
     private boolean locked = false;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "AccountRole",
+            joinColumns = @JoinColumn(name = "accountId", referencedColumnName = "id")
+    )
     private Set<Role> roles;
 
 }
