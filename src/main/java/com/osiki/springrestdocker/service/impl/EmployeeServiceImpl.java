@@ -22,7 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee1 = Employee.builder()
                 .firstName(employee.getFirstName())
                 .lastName(employee.getLastName())
-                .username(employee.getUsername())
+                .email(employee.getEmail())
                 .build();
 
         inMemoryRepository.save(employee1);
@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
        employee
                .stream()
                .map(emp -> new Employee(emp.getId(), emp.getFirstName(),
-                       emp.getLastName(), emp.getUsername()))
+                       emp.getLastName(), emp.getEmail()))
                .collect(Collectors.toList());
 
 
@@ -58,7 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employee2.setFirstName(employee.getFirstName());
         employee2.setLastName(employee.getLastName());
-        employee2.setUsername(employee.getUsername());
+        employee2.setEmail(employee.getEmail());
 
         inMemoryRepository.save(employee2);
 
