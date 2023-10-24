@@ -54,7 +54,7 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.deleteEmployee(id));
     }
 
-    private URI getLocation(Long id) {
+    protected static URI getLocation(Long id) {
         return ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(id).toUri();
     }
 }
