@@ -1,9 +1,12 @@
 package com.osiki.springrestdocker.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
+
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 @Getter
 @Setter
@@ -20,6 +23,7 @@ public class Account {
     private Long id;
     @Column(unique = true)
     private String username;
+    @JsonProperty(access = WRITE_ONLY)
     private String password;
     private boolean enabled = true;
     private boolean credentialExpired = false;
