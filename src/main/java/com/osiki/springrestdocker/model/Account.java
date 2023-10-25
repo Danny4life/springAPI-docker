@@ -22,8 +22,10 @@ public class Account {
 
     private Long id;
     @Column(unique = true)
+    @NonNull
     private String username;
     @JsonProperty(access = WRITE_ONLY)
+    @NonNull
     private String password;
     private boolean enabled = true;
     private boolean credentialExpired = false;
