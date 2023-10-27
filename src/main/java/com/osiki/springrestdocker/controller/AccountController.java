@@ -5,6 +5,7 @@ import com.osiki.springrestdocker.model.Employee;
 import com.osiki.springrestdocker.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import static com.osiki.springrestdocker.controller.EmployeeController.getLocati
 public class AccountController {
 
     private final AccountService accountService;
+
 
 
     @PostMapping

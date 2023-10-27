@@ -27,8 +27,10 @@ public class WebSecurityConfiguration {
 
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers(POST, "/api/accounts/**").permitAll();
-        http.authorizeRequests()
+                .antMatchers(POST, "/api/accounts/**")
+                .permitAll()
+                .antMatchers("/**")
+                .authenticated()
                 .anyRequest()
                 .hasAnyRole("USER", "ADMIN")
                 .and()

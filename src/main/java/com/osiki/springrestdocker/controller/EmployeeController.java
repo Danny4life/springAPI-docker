@@ -4,6 +4,7 @@ import com.osiki.springrestdocker.model.Employee;
 import com.osiki.springrestdocker.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -29,7 +30,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
 
+
     // save en employee to DB
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
        //return ResponseEntity.ok(employeeService.addEmployee(employee));
